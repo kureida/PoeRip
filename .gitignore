@@ -5,5 +5,5 @@ PoeApp/PoeApp/obj/Debug/PoeApp.csprojResolveAssemblyReference.cache
 PoeApp/PoeApp/obj/Debug/PoeApp.dll
 PoeApp/PoeApp/obj/Debug/PoeApp.pdb
 PoeApp/PoeApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-PoeApp/.vs/*
-PoeApp/PoeApp/obj/Debug/*
+PoeApp/.vs
+PoeApp/PoeApp/obj/Debug
