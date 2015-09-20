@@ -16,7 +16,7 @@ namespace PoeApp
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HelloWorld", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "TempestRIPDB", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Hello",
