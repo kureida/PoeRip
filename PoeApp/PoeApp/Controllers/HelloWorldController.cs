@@ -20,5 +20,10 @@ namespace PoeApp.Controllers
             ViewBag.NumTimes = numTimes;
             return View();
         }
+        public ActionResult goHome()
+        {
+            ViewBag.Message = "what";
+            return View();
+        }
     }
 }

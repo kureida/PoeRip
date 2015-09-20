@@ -254,6 +254,7 @@
     <Content Include="Views\Class1\Details.cshtml" />
     <Content Include="Views\Class1\Edit.cshtml" />
     <Content Include="Views\Class1\Index.cshtml" />
+    <Content Include="Views\HelloWorld\goHome.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
