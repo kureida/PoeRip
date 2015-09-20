@@ -26,5 +26,10 @@ namespace PoeApp.Controllers
 
             return View();
         }
+
+        public ActionResult gotoclass1()
+        {
+            return RedirectToAction("../Class1");
+        }
     }
 }
