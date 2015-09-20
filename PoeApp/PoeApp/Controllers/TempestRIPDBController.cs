@@ -15,20 +15,6 @@ namespace PoeApp.Controllers
     {
 
         private PoeRESTService service = new PoeRESTService();
-
-
-        /*
-        public async Task<ActionResult> Index()
-        {
-            return View("index", await service.GetLadderAsync());
-        }
-        
-        public ActionResult IndexSync()
-        {
-            return View("index", service.GetLadder());
-        }
-        */
-
         private TempestRIPDBDBContext db = new TempestRIPDBDBContext();
 
         
@@ -158,28 +144,45 @@ namespace PoeApp.Controllers
 
         public ActionResult PullLadderData()
         {
-            LadderData ladder = service.GetLadder();
             int c = 1;
-            foreach (LadderData.Entry i in ladder.entries)
+            for (int k = 0; k < 15000; k+=200)
             {
-                if (i.dead)
+                LadderData ladder = service.GetLadder(k);
+                
+                foreach (LadderData.Entry i in ladder.entries)
                 {
-                    TempestRIPDB temp = new TempestRIPDB();
-                    temp.ID = c;
-                    temp.Character = i.character.name;
-                    temp.Account = i.account.name;
-                    temp.Class = i.character.Class;
-                    temp.Experience = i.character.experience;
-                    temp.Level = i.character.level;
-                    temp.Rank = i.rank;
+                    if (i.dead)
+                    {
+                        TempestRIPDB temp = new TempestRIPDB();
+                        temp.ID = c;
+                        temp.Character = i.character.name;
+                        temp.Account = i.account.name;
+                        temp.Class = i.character.Class;
+                        temp.Experience = i.character.experience;
+                        temp.Level = i.character.level;
+                        temp.Rank = i.rank;
 
-                    //var duplicate = db.TempestRIPDB.Where(n => n.Character == temp.Character);
-                    //if(duplicate.Equals(null))
-                    db.TempestRIPDB.Add(temp);
-
-                    c++;
+                        //var duplicate = db.TempestRIPDB.Where(n => n.Character == temp.Character);
+                        //if(duplicate.Equals(null))
+                        bool dup = false;
+                        foreach (TempestRIPDB j in db.TempestRIPDB)
+                        {
+                            if (j.Character.Equals(temp.Character))
+                            {
+                                dup = true;
+                            }
+                        }
+                        if (dup == false)
+                        {
+                            db.TempestRIPDB.Add(temp);
+                            c++;
+                        }
+                        
+                    }
                 }
+                
             }
+
             db.SaveChanges();
             return RedirectToAction("index");
         }

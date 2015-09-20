@@ -15,9 +15,21 @@ namespace PoeApp
 
         public LadderData GetLadder()
         {
+
+
+                using (WebClient webClient = new WebClient())
+                {
+                    return JsonConvert.DeserializeObject<LadderData>(webClient.DownloadString(uri));
+                }
+       
+          
+        }
+        public LadderData GetLadder(int tom)
+        {
             using (WebClient webClient = new WebClient())
             {
-                return JsonConvert.DeserializeObject<LadderData>(webClient.DownloadString(uri));
+                string realTom = "&offset=" + tom;
+                return JsonConvert.DeserializeObject<LadderData>(webClient.DownloadString("http://api.pathofexile.com/ladders/Tempest?limit=20" + realTom));
             }
         }
 
