@@ -21,7 +21,7 @@ namespace PoeApp.Controllers
         }
 
         // GET: /TempestRIPDB/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -46,7 +46,7 @@ namespace PoeApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Character,Rank,Level,Class,Experience,Account")] TempestRIPDB tempestripdb)
+        public ActionResult Create([Bind(Include="ID,Character,Rank,Level,Class,Experience,Account")] TempestRIPDB tempestripdb)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace PoeApp.Controllers
         }
 
         // GET: /TempestRIPDB/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -78,7 +78,7 @@ namespace PoeApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Character,Rank,Level,Class,Experience,Account")] TempestRIPDB tempestripdb)
+        public ActionResult Edit([Bind(Include="ID,Character,Rank,Level,Class,Experience,Account")] TempestRIPDB tempestripdb)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace PoeApp.Controllers
         }
 
         // GET: /TempestRIPDB/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -107,7 +107,7 @@ namespace PoeApp.Controllers
         // POST: /TempestRIPDB/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             TempestRIPDB tempestripdb = db.TempestRIPDB.Find(id);
             db.TempestRIPDB.Remove(tempestripdb);
