@@ -32,7 +32,7 @@ namespace PoeApp.Controllers
             ViewBag.Message = "123091809810o120830912839012309812093";
             return RedirectToAction("../Class1/Details/1");
 
-
+        }
         public ActionResult gotoclass1()
         {
             return RedirectToAction("../Class1");
